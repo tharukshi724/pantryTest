@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">pantryTest</string>
+    <string name="toolbarappname">chop chop</string>
+    <string name="toolbar_name">Pantry</string>
+    <string name="heading">Add items</string>
+    <string name="headingtoedit">Edit items</string>
+    <string name="itemNametxt">Item</string>
+    <string name="itemSizetxt">Size</string>
+    <string name="datetxt">Exp Date</string>
+    <string name="itemNamehint">Enter item name</string>
+    <string name="itemSizehint">Enter item size</string>
+    <string name="datehint">Enter exp date</string>
+    <string name="radio1">before 2 weeks</string>
+    <string name="radio2">before month</string>
+    <string name="addbutton">Add to model</string>
+    <string name="editbutton">save</string>
+</resources>

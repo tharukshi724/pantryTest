@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+
+        android:icon="@drawable/ic_baseline_home_24"
+         android:title="Home"/>
+
+    <item
+        android:id="@+id/myrecipe"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="My Recipe"/>
+    <item
+        android:id="@+id/groceries"
+        android:icon="@drawable/ic_baseline_local_grocery_store_24"
+        android:title="Groceries"/>
+    <item
+        android:id="@+id/model"
+        android:icon="@drawable/ic_baseline_kitchen_24"
+        android:title="Pantry"/>
+    <item
+        android:id="@+id/mealPlan"
+        android:icon="@drawable/ic_baseline_set_meal_24"
+        android:title="Meal Plan"/>
+
+
+
+</menu>

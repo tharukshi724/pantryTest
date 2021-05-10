@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FF884D</color>
+    <color name="purple_500">#FF884D</color>
+    <color name="purple_700">#FF884D</color>
+    <color name="teal_200">#FF884D</color>
+    <color name="teal_700">#FF884D</color>
+    <color name="black">#FF000000</color>
+
+    <color name="fieldBorderColor">#FF6347</color>
+    <color name="background">#FFFFFF</color>
+    <color name="mainColor">#FF884D</color>
+    <color name="fieldSolid">#D6D1CC</color>
+    <color name="iconcolor">#6A6A68</color>
+    <color name="swipeColor">#DFF98560</color>
+</resources>

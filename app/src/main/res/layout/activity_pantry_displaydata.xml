@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include
+
+        layout="@layout/toolbar"
+        >
+
+
+    </include>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="502dp">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="8dp"
+
+
+        android:backgroundTint="@color/mainColor"
+        android:src="@drawable/ic_baseline_add_24"
+        android:visibility="visible"
+        app:elevation="10dp"
+
+        app:fabSize="normal"
+        app:hoveredFocusedTranslationZ="2dp"
+        app:tint="@color/background" />
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_gravity="end|bottom"
+
+        android:background="@color/background"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation">
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+</LinearLayout>
