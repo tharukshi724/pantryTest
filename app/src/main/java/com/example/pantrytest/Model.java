@@ -17,6 +17,7 @@ public class Model {
 
     private String notificationTime;
     public  String dayDifference;
+    public String key;
 
 
 
@@ -31,10 +32,17 @@ public class Model {
 
     }
 
+
     public Model() {
     }
 
+    public String getKey() {
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getItem() {
         return item;

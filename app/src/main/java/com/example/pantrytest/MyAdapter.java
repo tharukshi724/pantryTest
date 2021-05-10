@@ -2,11 +2,13 @@ package com.example.pantrytest;
 
 
 
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,15 +53,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
     List<Model> modelList;
+    Context context;
 
-
-
-    public MyAdapter(List<Model> modelList) {
+    public MyAdapter(Context context ,List<Model> modelList) {
         this.modelList = modelList;
-
-
-
-
+        this.context = context;
     }
 
 
@@ -92,20 +90,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             date1 = dates.parse(d1);
             date2 = dates.parse(currentDate);
 
-
             long  difference =  Math.abs(date1.getTime() - date2.getTime());
-
-
             long differenceDates = difference / (24 * 60 * 60 * 1000);
 
             String dayDifference = Long.toString(differenceDates);
             model.setDayDifference(dayDifference);
-
-
-
-
-
-
 
 
         } catch (Exception exception) {
@@ -116,34 +105,67 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
+            Model updateM = new Model();
             @Override
             public void onClick(View v) {
-                final DialogPlus dia = DialogPlus.newDialog(holder.edit.getContext())
+               final DialogPlus dia = DialogPlus.newDialog(holder.edit.getContext())
                         .setContentHolder(new ViewHolder(R.layout.dialogcontent))
                         .setExpanded(true,600)
                         .create();
 
-                View myview = dia.getHolderView();
+                View view = dia.getHolderView();
 
-                EditText item = myview.findViewById(R.id.item);
-                EditText size = myview.findViewById(R.id.size);
-                EditText date = myview.findViewById(R.id.date);
-                Button btn = myview.findViewById(R.id.updateBtn);
+            EditText item = view.findViewById(R.id.item);
+            EditText size = view.findViewById(R.id.size);
+            EditText date = view.findViewById(R.id.date);
+            Button btn = view.findViewById(R.id.updateBtn);
 
                 item.setText(model.getItem());
                 size.setText(model.getSize());
                 date.setText(model.getDate());
 
+
+
+
+            AlertDialog dialog = new AlertDialog.Builder(context)
+                        .setView(view)
+                    .create();
+
+
+
+            System.out.println(updateM.getItem());
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        updateM.setItem(item.getText().toString());
+                        updateM.setSize(size.getText().toString());
+                        updateM.setDate(date.getText().toString());
+
+                        Toast.makeText(context, ""+model.getKey(), Toast.LENGTH_SHORT).show();
+                        FirebaseDatabase.getInstance().getReference("Model").child(model.getKey()).setValue(updateM).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(context, "Updated Sucessfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context,DisplayPantry.class);
+                                context.startActivity(intent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "error"+e, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
                 dia.show();
-
-
-
 
             }
         });
-
-
     }
+
+
 
 
 
@@ -156,17 +178,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-         TextView item;
+        TextView item;
         TextView size;
         TextView dayDifference;
-
         Button edit;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
             item = (TextView)itemView.findViewById(R.id.text1);
             size = (TextView)itemView.findViewById(R.id.text3);
             dayDifference = (TextView)itemView.findViewById(R.id.text2);
             edit = itemView.findViewById(R.id.edit);
+
         }
     }
 

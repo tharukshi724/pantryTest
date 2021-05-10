@@ -80,7 +80,7 @@ public class DisplayPantry extends AppCompatActivity  {
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        myAdapter = new MyAdapter(list);
+        myAdapter = new MyAdapter(this,list);
 
         recyclerview.setAdapter(myAdapter);
 
@@ -93,8 +93,7 @@ public class DisplayPantry extends AppCompatActivity  {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Model data = dataSnapshot.getValue(Model.class);
-
-
+                    data.setKey(dataSnapshot.getRef().getKey());
                     list.add(data);
                 }
 
